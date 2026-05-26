@@ -1,0 +1,28 @@
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5%;
+    z-index: 1;
+    box-sizing: border-box;
+    flex: 1 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+}

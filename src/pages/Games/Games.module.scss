@@ -1,0 +1,178 @@
+.pageContainer {
+    margin: 0 auto;
+}
+
+.gamesHeader{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin-top: 10px;
+
+     &__title {
+        text-align: center;
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+            color: $white_text;
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgba($color: $white_text, $alpha: 0.4);
+        }
+     }
+}
+
+.searchContainer {
+    position: relative;
+    width: 100%;
+    max-width: 646px;
+    margin-top: 24px; // Відступ від текстового заголовка, якщо потрібно
+
+    // Позиціонуємо тег <img> чітко праворуч всередині контейнера
+    img {
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        
+        width: 22px;
+        height: 22px;
+        
+        /* Робимо іконку напівпрозорою, як на макеті Figma */
+        opacity: 0.35; 
+        
+        pointer-events: none; // Щоб клік крізь іконку падав на інпут
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 40px;
+        padding: 0.7px;
+
+        background: linear-gradient(90deg,
+            rgba(#ffffff, 0.03) 0%,
+            rgba(#FFFDFD, 0.17) 25%,
+            rgba(#ffffff, 0.5) 50%,
+            rgba(#ffffff, 0.17) 76%,
+            rgba(#ffffff, 0.03) 100%
+        );
+
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+    &:focus-within {
+        img {
+            opacity: 0.7;
+        }
+    }
+}
+
+.searchInput {
+    width: 100%;
+    background: rgba(201, 254, 55, 0.09);
+    -webkit-backdrop-filter: blur(12px);
+        
+    border-radius: 100px; // Повністю закруглені краї типу капсули
+
+    padding: 18px 60px 18px 24px;
+    
+    color: $white_text;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.statsGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+    
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.statCard { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    width: 262px;
+    height: 124px;
+
+    // Точний діагональний градієнт із нового макету Figma
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.40) 0%, 
+        rgba(0, 0, 0, 0.15) 100%
+    );
+
+    backdrop-filter: blur(1px);
+    border-radius: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.03); 
+    
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 1) 0%, 
+            rgba(0, 0, 0, 0.7) 100
+        );
+        border-color: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px); 
+    }
+
+    &__label {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px; 
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+    }
+
+    .value_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__value {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        svg {
+            width: 22px;
+            height: 22px;
+            fill: none; 
+            stroke: #ffffff; 
+            stroke-width: 2px;
+        }
+    }
+}

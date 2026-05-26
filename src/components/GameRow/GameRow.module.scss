@@ -1,0 +1,80 @@
+.row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr; 
+    align-items: center;
+    padding-right: 200px;
+    gap: 20px;
+    
+    // Ефект розділення: створюємо повітря між картками
+    margin-bottom: 15px; 
+    
+    // Індивідуальне заокруглення рядка, як на макеті
+    border-radius: 16px; 
+    
+    // Базовий напівпрозорий фон рядка для об'єму
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    
+    transition: all 0.2s ease-in-out;
+
+    // Прибираємо маргін у найостаннішого рядка в таблиці
+    &:last-child {
+        margin-bottom: 0; 
+    }
+
+    // Ефект підсвічування картки при наведенні
+    &:hover {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 0 15px rgba(201, 254, 55, 0.02);
+    }
+
+    .imageContainer {
+        width: 160px;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .gameName {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        padding-left: 8px;
+    }
+
+    .graphContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 112px;
+        filter: drop-shadow(0 0 6px rgba(201, 254, 55, 0.25)); 
+        
+        img {
+            width: 112px;
+            height: 45px;
+            object-fit: contain;
+        }
+    }
+
+    .count {
+        display: flex;
+        justify-content: flex-start; 
+        align-items: center;
+        text-align: right;
+        width: 100%;
+        
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+        font-variant-numeric: tabular-nums;
+        font-family: 'Inter', sans-serif;
+
+    }
+}

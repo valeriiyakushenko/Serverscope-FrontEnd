@@ -1,0 +1,79 @@
+.pageContainer {
+    margin: 0 auto;
+}
+
+.serversHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: 600;
+    }
+}
+
+.gridStats {
+    display: flex;
+    gap: 3rem;
+
+    .stat {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        position: relative;
+        width: 230px;
+        height: 44px;
+        background: rgba(201, 254, 55, 0.09);
+        border-radius: 40px;
+        padding: 0 24px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 40px;
+            padding: 0.7px;
+
+            background: linear-gradient(90deg,
+                rgba(#ffffff, 0.03) 0%,
+                rgba(#FFFDFD, 0.17) 25%,
+                rgba(#ffffff, 0.5) 50%,
+                rgba(#ffffff, 0.17) 76%,
+                rgba(#ffffff, 0.03) 100%
+            );
+
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #D0FF50; // Точний колір з Figma
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+
+            /* Приглушене та м'яке світіння (Layer blur 4) */
+            box-shadow: 
+                0 0 4px rgba(208, 255, 80, 0.8),  // Ближнє легке світіння
+                0 0 8px rgba(208, 255, 80, 0.7);  // М'яке розсіювання в радіусі 8px
+        }
+
+
+        p {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            white-space: nowrap;
+        }
+    }
+}

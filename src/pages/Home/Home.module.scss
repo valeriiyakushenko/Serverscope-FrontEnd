@@ -1,0 +1,106 @@
+.pageContainer {
+    margin: 0 auto;
+}
+
+.homeHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $white_text;
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+
+        background: linear-gradient(180deg,
+                #DFFF88 20%,
+                rgba(#D9FD77, 0.27) 100%);
+
+        background-color: rgba(0, 0, 0, 0.2);
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+        display: inline-block;
+        line-height: 1.2;
+    }
+
+
+    &__description {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 900px;
+        font-size: 42px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+
+
+    &__info {
+        margin: 22px auto;
+        width: 100%;
+        max-width: 800px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba($color: $white_text, $alpha: 0.74);
+    }
+}
+
+
+.homeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+
+    &__featuredIcon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 20px;
+
+        color: $white_text;
+        font-size: 20px;
+        font-weight: 600;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60vw;
+            height: 1.3px;
+
+            background: linear-gradient(90deg,
+                rgba(#FFFFFF, 0.07) 6%,
+                rgba(#DADADA, 0.22) 25%,
+                rgba(#C9C9C9, 1) 50%,
+                rgba(#B9B9B9, 0.22) 74%,
+                rgba(#999999, 0.07) 94%,
+            );
+
+            filter: blur(.5px);
+        }
+    }
+
+    &__gamesGrid {
+        margin-top: 30px;
+        width: 100%;
+        max-width: 1600px;
+
+        display: grid;
+
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2rem;
+        justify-items: center;
+    }
+}

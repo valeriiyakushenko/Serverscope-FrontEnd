@@ -1,0 +1,62 @@
+nav {
+    padding: 18px 5%;
+}
+
+.navbar_container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.navigation {
+    position: relative;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 20px;
+    flex-shrink: 1;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 0.7px;
+
+        background: linear-gradient(90deg,
+                rgba(255, 255, 255, 0.02) 0%,
+                rgba(255, 255, 255, 0.1) 25%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0.1) 76%,
+                rgba(255, 255, 255, 0.02) 100%);
+
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+
+        pointer-events: none;
+        z-index: -1;
+    }
+}
+
+
+.navbar_menu {
+    display: flex;
+    gap: clamp(20px, 10vw, 150px);
+
+    li {
+        white-space: nowrap;
+    }
+}
+
+.navbar_button {
+    display: flex;
+    gap: clamp(10px, 5vw, 16px);
+}

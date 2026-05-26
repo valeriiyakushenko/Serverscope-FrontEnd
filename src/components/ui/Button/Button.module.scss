@@ -1,0 +1,30 @@
+.btn {
+    display: inline-flex;
+    white-space: nowrap;
+
+    &--base {
+        padding: 8px 16px;
+        font-size: 16px;
+        border-radius: 20px;
+    }
+
+    &--sm {
+        padding: 4px, 8px;
+        font-size: 14px;
+    }
+
+    &--primary {
+        background-color: $second-lime;
+        color: black;
+    }
+
+    &--secondary {
+        background-color: rgba($color: #D9D9D9, $alpha: 0.12);
+        color: white;
+    }
+
+    &--loading {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}

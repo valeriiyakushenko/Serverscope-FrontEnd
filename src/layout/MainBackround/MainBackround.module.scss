@@ -1,0 +1,36 @@
+.backroundWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: $bg-color;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.gridLines {
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    filter: blur(0.5px);
+    z-index: 0;
+
+    background-image: repeating-linear-gradient(
+        90deg,
+        #f8f7f7 0px,
+        #f8f7f7 1px,
+        transparent 1px,
+        transparent 150px
+    );
+    
+    mask-image: linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.3) 0%,
+        black 49%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    
+
+}

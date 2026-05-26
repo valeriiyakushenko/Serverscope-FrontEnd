@@ -1,0 +1,74 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.table {
+    width: 100%;
+    background: linear-gradient(135deg, 
+        rgba(4, 5, 2, 0.64) 0%, 
+        rgba(54, 63, 30, 0.34) 100%
+    );
+    backdrop-filter: blur(1px);
+    border-radius: 30px; 
+    overflow: hidden; 
+}
+
+.header {
+    display: grid;
+    // Жорсткі пропорції колонок: Rank (80px), Name (1fr), Graph (150px), Players (140px), Address (220px)
+    grid-template-columns: 80px 1fr 150px 140px 220px;
+    align-items: center;
+    padding: 24px 40px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.2); 
+    gap: 20px;
+
+    div {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s ease;
+        line-height: 1.2;
+
+        &:hover {
+            color: #D0FF50;
+        }
+
+        img {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    div:nth-child(1),
+    div:nth-child(2) {
+        justify-content: flex-start;
+    }
+
+    .emptyGraphSpace {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    div:nth-child(4),
+    div:nth-child(5) {
+        justify-content: flex-start;
+    }
+}
+
+.tableBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 40px;
+}
