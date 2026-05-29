@@ -1,5 +1,10 @@
 .pageContainer {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .serversHeader {
@@ -7,11 +12,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
 
     h1 {
         color: #ffffff;
         font-size: 36px;
         font-weight: 600;
+        margin: 0;
     }
 }
 
@@ -37,7 +45,6 @@
             inset: -1px;
             border-radius: 40px;
             padding: 0.7px;
-
             background: linear-gradient(90deg,
                 rgba(#ffffff, 0.03) 0%,
                 rgba(#FFFDFD, 0.17) 25%,
@@ -45,7 +52,6 @@
                 rgba(#ffffff, 0.17) 76%,
                 rgba(#ffffff, 0.03) 100%
             );
-
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -56,17 +62,14 @@
         .dot {
             width: 10px;
             height: 10px;
-            background-color: #D0FF50; // Точний колір з Figma
+            background-color: #D0FF50;
             border-radius: 50%;
             display: inline-block;
             flex-shrink: 0;
-
-            /* Приглушене та м'яке світіння (Layer blur 4) */
             box-shadow: 
-                0 0 4px rgba(208, 255, 80, 0.8),  // Ближнє легке світіння
-                0 0 8px rgba(208, 255, 80, 0.7);  // М'яке розсіювання в радіусі 8px
+                0 0 4px rgba(208, 255, 80, 0.8),
+                0 0 8px rgba(208, 255, 80, 0.7);
         }
-
 
         p {
             color: #ffffff;
@@ -75,5 +78,107 @@
             margin: 0;
             white-space: nowrap;
         }
+    }
+}
+
+
+.filterCard {
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.57);
+    backdrop-filter: blur(1px);
+    border-radius: 30px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.filterGrid {
+    display: grid;
+     grid-template-columns: repeat(4, 1fr); 
+    gap: 24px;
+}
+
+.statusRow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.statusLabel {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.checkboxGroup {
+    display: flex;
+    gap: 40px; // Відступи між опціями статусів
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #ffffff;
+        
+        .customCheck {
+            border-color: rgba(201, 254, 55, 0.6);
+        }
+    }
+
+    // Ховаємо дефолтний системний чекбокс
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        // Коли чекбокс активний
+        &:checked ~ .customCheck {
+            background: #C9FE37;
+            border-color: #C9FE37;
+            box-shadow: 0 0 10px rgba(201, 254, 55, 0.4);
+
+            &::after {
+                display: block;
+            }
+        }
+    }
+}
+
+// Кастомне кругле кільце з Figma дизайну
+.customCheck {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%; // Робимо його ідеально круглим
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Маленька внутрішня цятка при активному стані
+    &::after {
+        content: "";
+        position: absolute;
+        display: none;
+        width: 8px;
+        height: 8px;
+        background: #040502; // Темна серцевина
+        border-radius: 50%;
     }
 }

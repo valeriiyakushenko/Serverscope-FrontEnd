@@ -1,0 +1,63 @@
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; // Відступ між назвою (label) та самим інпутом
+    width: 100%;
+}
+
+.label {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.inputField {
+    width: 100%;
+    height: 44px;
+    // Темний напівпрозорий фон картки інпуту
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px; // Округлі інпути як на макеті
+    padding: 0 48px 0 24px; // Великий паддінг справа, щоб текст не залазив під лупу
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.38); // Приглушений колір плейсхолдера
+    }
+
+    // Ефект підсвічування при кліку на інпут
+    &:focus {
+        border-color: rgba(201, 254, 55, 0.5); // Легкий зелений бордер
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 0 12px rgba(201, 254, 55, 0.1);
+    }
+}
+
+.searchIcon {
+    position: absolute;
+    right: 24px; // Ставимо лупу чітко з правого боку
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    pointer-events: none; // Щоб клік крізь іконку фокусував інпут
+    transition: opacity 0.2s ease;
+}
+
+// Якщо інпут у фокусі, робимо лупу трохи яскравішою
+.inputField:focus ~ .searchIcon {
+    opacity: 0.9;
+}

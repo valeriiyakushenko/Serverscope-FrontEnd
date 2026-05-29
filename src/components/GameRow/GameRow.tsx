@@ -5,6 +5,7 @@ import ServerGraph from '../ServerGraph/ServerGraph';
 
 interface GameRowProps {
     id: number;
+    appid: number;
     image: string;
     name: string;
     servers: number;
@@ -12,14 +13,14 @@ interface GameRowProps {
     graphData: number[];
 }
 
-export const GameRow: React.FC<GameRowProps> = ({id, image, name, servers, players, graphData}) => {
+export const GameRow: React.FC<GameRowProps> = ({appid, image, name, servers, players, graphData}) => {
 
     const formatNumber = (num: number) => {
         return num.toLocaleString('en-US')
     }
 
     return (
-        <Link to={`/games/${id}`} className={styles.rowLink}>
+        <Link to={`/games/${appid}`} className={styles.rowLink}>
             <div className={styles.row}>
                 <div className={styles.imageContainer}>
                     <img src={image} alt={name} loading="lazy" />

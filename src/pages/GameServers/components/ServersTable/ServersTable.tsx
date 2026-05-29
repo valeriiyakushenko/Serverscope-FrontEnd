@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ServersTable.module.scss";
 import { ServerRow } from "../ServerRow/ServerRow";
 import arrow from "../../../../img/svg/arrow-right.svg";
@@ -12,31 +12,64 @@ interface ServerItem {
 
 interface ServersTableProps {
     serversList: ServerItem[];
+    totalCount: number;
+    page: number;
+    onChangePage: (page: number) => void;
+    sortBy: string;
+    sortOrder: "asc" | "desc";
+    onChangeSort: (field: string, nextOrder: "asc" | "desc") => void;
 }
 
-export const ServersTable: React.FC<ServersTableProps> = ({ serversList }) => {
-    const [page, setPage] = useState(1);
-    const [sortBy, setSortBy] = useState("rank");
-
-    const totalCount = serversList?.length || 0;
+export const ServersTable: React.FC<ServersTableProps> = ({ 
+    serversList, 
+    totalCount, 
+    page, 
+    onChangePage, 
+    sortBy, 
+    sortOrder, 
+    onChangeSort 
+}) => {
     const itemsPerPage = 15;
     const totalPages = Math.ceil(totalCount / itemsPerPage);
+
+    const handleSortClick = (field: string) => {
+        if (sortBy === field) {
+            const nextOrder = sortOrder === "asc" ? "desc" : "asc";
+            onChangeSort(field, nextOrder);
+        } else {
+            onChangeSort(field, "desc");
+        }
+    };
+
+    const getArrowStyle = (field: string) => {
+        if (sortBy !== field) return { transform: "none", opacity: 0.3, transition: "transform 0.2s, opacity 0.2s" };
+        
+        const rotation = sortOrder === "desc" ? "rotate(90deg)" : "rotate(270deg)";
+        return {
+            transform: rotation,
+            color: "#C9FE37",
+            transition: "transform 0.2s"
+        };
+    };
 
     return (
         <div className={styles.container}>
             <div className={styles.table}>
                 <div className={styles.header}>
-                    <div className={styles.header__section} onClick={() => setSortBy("rank")}>
+                    <div className={styles.header__section} onClick={() => handleSortClick("rank")}>
                         Rank
-                        <img src={arrow} alt="arrow" style={{ transform: sortBy === 'rank' ? 'rotate(90deg)' : 'none' }} />
+                        <img src={arrow} alt="arrow" style={getArrowStyle("rank")} />
                     </div>
-                    <div className={styles.header__section} onClick={() => setSortBy("name")}>
+                    <div className={styles.header__section} onClick={() => handleSortClick("name")}>
                         Server Name
-                        <img src={arrow} alt="arrow" style={{ transform: sortBy === 'name' ? 'rotate(90deg)' : 'none' }} />
+                        <img src={arrow} alt="arrow" style={getArrowStyle("name")} />
                     </div>
-                    <div className={styles.header__section} onClick={() => setSortBy("players")}>
+                    
+                    <div></div>
+                    
+                    <div className={styles.header__section} onClick={() => handleSortClick("players")}>
                         Players Online
-                        <img src={arrow} alt="arrow" style={{ transform: sortBy === 'players' ? 'rotate(90deg)' : 'none' }} />
+                        <img src={arrow} alt="arrow" style={getArrowStyle("players")} />
                     </div>
                     <div className={styles.header__section}>
                         Address
@@ -45,9 +78,14 @@ export const ServersTable: React.FC<ServersTableProps> = ({ serversList }) => {
 
                 <div className={styles.tableBody}>
                     {serversList && serversList.length > 0 ? (
-                        serversList.map((server) => (
-                            <ServerRow key={server.rank} {...server} />
-                        ))
+                        serversList.map((server) => {
+                            return (
+                                <ServerRow 
+                                    key={server.address} 
+                                    {...server} 
+                                />
+                            );
+                        })
                     ) : (
                         <div className={styles.noServers}>No active servers found.</div>
                     )}
@@ -59,7 +97,7 @@ export const ServersTable: React.FC<ServersTableProps> = ({ serversList }) => {
                     <div className={styles.pagination__control}>
                         <button 
                             className={styles.navBtn} 
-                            onClick={() => setPage(p => p - 1)} 
+                            onClick={() => onChangePage(page - 1)}
                             disabled={page === 1}
                         > ‹ </button>
                         
@@ -69,7 +107,7 @@ export const ServersTable: React.FC<ServersTableProps> = ({ serversList }) => {
 
                         <button 
                             className={styles.navBtn} 
-                            onClick={() => setPage(p => p + 1)}
+                            onClick={() => onChangePage(page + 1)}
                             disabled={page >= totalPages}
                         > › </button>
                     </div>
