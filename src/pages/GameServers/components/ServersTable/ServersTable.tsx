@@ -4,6 +4,7 @@ import { ServerRow } from "../ServerRow/ServerRow";
 import arrow from "../../../../img/svg/arrow-right.svg";
 
 interface ServerItem {
+    id: number;
     rank: number;
     name: string;
     players: string;
@@ -81,7 +82,7 @@ export const ServersTable: React.FC<ServersTableProps> = ({
                         serversList.map((server) => {
                             return (
                                 <ServerRow 
-                                    key={server.address} 
+                                    key={server.id} 
                                     {...server} 
                                 />
                             );

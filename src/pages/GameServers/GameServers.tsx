@@ -1,6 +1,7 @@
 import type React from "react";
 import { useParams } from "react-router-dom";
-import { useGetGameByIdQuery, useGetServersQuery } from "../../services/gamesApi";
+import { useGetGameByIdQuery } from "../../services/gamesApi";
+import { useGetServersQuery } from "../../services/serverApi"
 import styles from './GameServers.module.scss'
 import { useState } from "react";
 import { FilterInput } from "./components/FilterInput";
@@ -40,10 +41,12 @@ export const GameServers: React.FC = () => {
             sortOrder,
             search,
             map,
-            location
+            location,
+            address
         } : skipToken
     );
 
+    const handleAddressChange = (val: string) => {setAddress(val); setPage(1); };
     const handleSearchChange = (val: string) => { setSearch(val); setPage(1); };
     const handleLocationChange = (val: string) => { setLocation(val); setPage(1); };
     const handleMapChange = (val: string) => { setMap(val); setPage(1); };
@@ -57,6 +60,7 @@ export const GameServers: React.FC = () => {
     }
 
     const formattedServers = (serversData?.data || []).map(server => ({
+        id: server.id,
         rank: server.rank || 0,
         name: server.name || "Unknown Server",
         players: `${server.players || 0}/${server.maxPlayers || 0}`,
@@ -85,7 +89,7 @@ export const GameServers: React.FC = () => {
                     <FilterInput label="Search" placeholder="Search..." value={search} onChange={handleSearchChange} />
                     <FilterInput label="Location" placeholder="Region" value={location} onChange={handleLocationChange} />
                     <FilterInput label="Search by map" placeholder="Map" value={map} onChange={handleMapChange} />
-                    <FilterInput label="Address" placeholder="IP Address" value={address} onChange={setAddress} />
+                    <FilterInput label="Address" placeholder="IP Address" value={address} onChange={handleAddressChange} />
                 </div>
                 <div className={styles.statusRow}>
                     <span className={styles.statusLabel}>Status</span>

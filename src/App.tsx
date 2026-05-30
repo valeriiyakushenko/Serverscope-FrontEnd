@@ -6,6 +6,7 @@ import MainBackround from './layout/MainBackround/MainBackround'
 import Footer from './layout/Footer/Footer'
 import Games from './pages/Games/Games'
 import { GameServers } from './pages/GameServers/GameServers'
+import { Server } from './pages/Server/Server'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/games' element={<Games/>} />
             <Route path="/games/:id" element={<GameServers />} />
+            <Route path="/servers/:id" element={<Server />} />
           </Routes>
         </div>
 

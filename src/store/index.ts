@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { gamesApi } from '../services/gamesApi';
+import { baseApi } from '../services/baseApi'; 
 
 export const store = configureStore({
   reducer: {
-    [gamesApi.reducerPath]: gamesApi.reducer,
+    [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(gamesApi.middleware),
+    getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

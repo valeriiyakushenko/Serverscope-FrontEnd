@@ -32,9 +32,8 @@
     position: relative;
     width: 100%;
     max-width: 646px;
-    margin-top: 24px; // Відступ від текстового заголовка, якщо потрібно
+    margin-top: 24px;
 
-    // Позиціонуємо тег <img> чітко праворуч всередині контейнера
     img {
         position: absolute;
         right: 24px;
@@ -44,10 +43,9 @@
         width: 22px;
         height: 22px;
         
-        /* Робимо іконку напівпрозорою, як на макеті Figma */
         opacity: 0.35; 
         
-        pointer-events: none; // Щоб клік крізь іконку падав на інпут
+        pointer-events: none;
         transition: opacity 0.2s ease-in-out;
     }
 
@@ -89,7 +87,7 @@
     background: rgba(201, 254, 55, 0.09);
     -webkit-backdrop-filter: blur(12px);
         
-    border-radius: 100px; // Повністю закруглені краї типу капсули
+    border-radius: 100px;
 
     padding: 18px 60px 18px 24px;
     
@@ -121,7 +119,6 @@
     width: 262px;
     height: 124px;
 
-    // Точний діагональний градієнт із нового макету Figma
     background: linear-gradient(135deg,
         rgba(0, 0, 0, 0.40) 0%, 
         rgba(0, 0, 0, 0.15) 100%

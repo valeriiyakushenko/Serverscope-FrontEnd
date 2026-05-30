@@ -88,8 +88,6 @@ export const GamesTable: React.FC<GamesTableProps> = ({ searchTerm, onStatsCalcu
                     </div>
                 </div>
 
-                {/* Додаємо динамічний opacity: коли дані перезавантажуються з сервера, */}
-                {/* таблиця стає трохи прозорою (на 0.6), показуючи користувачу, що йде оновлення */}
                 <div 
                     className={styles.tableBody} 
                     style={{ 
