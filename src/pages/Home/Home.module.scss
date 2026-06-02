@@ -103,5 +103,15 @@
         gap: 2rem;
         justify-items: center;
         
+        :global(.gameCard), a, div[class*="GameCard"] {
+            border-top-left-radius: 20px !important;
+            border-top-right-radius: 20px !important;
+
+            img {
+                border-top-left-radius: 20px !important;
+                border-top-right-radius: 20px !important;
+                object-fit: cover;
+            }
+        }
     }
 }

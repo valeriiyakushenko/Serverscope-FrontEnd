@@ -14,8 +14,24 @@ function Navbar() {
                 <ul className={styles.navbar_menu}>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/games'>Games</Link></li>
-                    <li><Link to='/'>Search</Link></li>
-                    <li><Link to='/'>Charts</Link></li>
+                    <li className={styles.disabledItem}>
+                        <Link 
+                            to="/" 
+                            className={styles.disabledLink} 
+                            onClick={(e) => e.preventDefault()}
+                        >
+                            Search
+                        </Link>
+                    </li>
+                    <li className={styles.disabledItem}>
+                        <Link 
+                            to="/" 
+                            className={styles.disabledLink} 
+                            onClick={(e) => e.preventDefault()}
+                        >
+                            Charts
+                        </Link>
+                    </li>
                 </ul>
             </div>
 

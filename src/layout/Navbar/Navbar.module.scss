@@ -60,3 +60,18 @@ nav {
     display: flex;
     gap: clamp(10px, 5vw, 16px);
 }
+
+.disabledLink {
+    color: rgba($white_text, 0.3) !important;
+    pointer-events: none;
+    cursor: not-allowed;
+    
+    &:hover {
+        color: rgba($white_text, 0.3) !important;
+        background: transparent !important;
+    }
+}
+
+.disabledItem {
+    cursor: not-allowed; 
+}

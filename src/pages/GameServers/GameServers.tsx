@@ -1,8 +1,8 @@
 import type React from "react";
 import { useParams } from "react-router-dom";
 import { useGetGameByIdQuery } from "../../services/gamesApi";
-import { useGetServersQuery } from "../../services/serverApi"
-import styles from './GameServers.module.scss'
+import { useGetServersQuery } from "../../services/serverApi";
+import styles from './GameServers.module.scss';
 import { useState } from "react";
 import { FilterInput } from "./components/FilterInput";
 import { ServersTable } from "./components/ServersTable/ServersTable";
@@ -19,12 +19,30 @@ export const GameServers: React.FC = () => {
     const [location, setLocation] = useState('');
     const [map, setMap] = useState('');
     const [address, setAddress] = useState('');
+    
+    const [isOnline, setIsOnline] = useState<boolean | undefined>(undefined);
+    const [isSecure, setIsSecure] = useState<boolean | undefined>(undefined);
 
     const handleSortChange = (newField: string, newOrder: 'asc' | 'desc') => {
         setSortBy(newField);
         setSortOrder(newOrder);
         setPage(1); 
     };
+
+    const handleOnlineChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsOnline(e.target.checked ? true : undefined);
+        setPage(1);
+    };
+
+    const handleSecureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsSecure(e.target.checked ? true : undefined);
+        setPage(1);
+    }; 
+
+    const handleAddressChange = (val: string) => { setAddress(val); setPage(1); };
+    const handleSearchChange = (val: string) => { setSearch(val); setPage(1); };
+    const handleLocationChange = (val: string) => { setLocation(val); setPage(1); };
+    const handleMapChange = (val: string) => { setMap(val); setPage(1); };
 
     const targetAppid = id ? Number(id) : null;
 
@@ -42,14 +60,11 @@ export const GameServers: React.FC = () => {
             search,
             map,
             location,
-            address
+            address,
+            isOnline,
+            isSecure
         } : skipToken
     );
-
-    const handleAddressChange = (val: string) => {setAddress(val); setPage(1); };
-    const handleSearchChange = (val: string) => { setSearch(val); setPage(1); };
-    const handleLocationChange = (val: string) => { setLocation(val); setPage(1); };
-    const handleMapChange = (val: string) => { setMap(val); setPage(1); };
 
     if (isGameLoading) {
         return <div style={{ color: '#fff', padding: '40px', textAlign: 'center' }}>Loading game details...</div>;
@@ -95,19 +110,22 @@ export const GameServers: React.FC = () => {
                     <span className={styles.statusLabel}>Status</span>
                     <div className={styles.checkboxGroup}>
                         <label className={styles.checkboxLabel}>
-                            <input type="checkbox" />
+                            <input 
+                                type="checkbox" 
+                                checked={!!isOnline} 
+                                onChange={handleOnlineChange} 
+                            />
                             <span className={styles.customCheck}></span>
-                            Best Rating
+                            Is online
                         </label>
                         <label className={styles.checkboxLabel}>
-                            <input type="checkbox" />
+                            <input 
+                                type="checkbox" 
+                                checked={!!isSecure} 
+                                onChange={handleSecureChange} 
+                            />
                             <span className={styles.customCheck}></span>
-                            Featured
-                        </label>
-                        <label className={styles.checkboxLabel}>
-                            <input type="checkbox" />
-                            <span className={styles.customCheck}></span>
-                            Trending
+                            Is secure
                         </label>
                     </div>
                 </div>
@@ -127,5 +145,5 @@ export const GameServers: React.FC = () => {
                 />
             )}
         </div>
-    )
-}
+    );
+};
