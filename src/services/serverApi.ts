@@ -21,14 +21,30 @@ export const serverApi = baseApi.injectEndpoints({
                 };
             }
         }),
+
         getServerById: builder.query<ServerItem, number | string>({
             query: (id) => `/servers/${id}`
-        })
+        }),
+
+        getServerChart: builder.query<{ points: { time: string; players: number }[] }, { id: string; period: string }>({
+            query: ({ id, period }) => `servers/${id}/chart?period=${period}`,
+        }),
+
+        getServerRankChart: builder.query<{ points: { time: string; rank: number }[] }, { id: string; period: string }>({
+            query: ({ id, period }) => `servers/${id}/rank-chart?period=${period}`,
+        }),
+
+        getServerUptimeChart: builder.query<{ points: { time: string; uptimeRatio: number }[] }, { id: string; period: string }>({
+            query: ({ id, period }) => `servers/${id}/uptime-chart?period=${period}`,
+        }),
     })
 })
 
 
 export const {
     useGetServersQuery,
-    useGetServerByIdQuery
+    useGetServerByIdQuery,
+    useGetServerChartQuery,
+    useGetServerRankChartQuery,
+    useGetServerUptimeChartQuery
 } = serverApi;

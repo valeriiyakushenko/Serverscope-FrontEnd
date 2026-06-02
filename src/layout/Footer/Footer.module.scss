@@ -1,17 +1,16 @@
 .footer {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding-top: 60px; 
-    padding-bottom: 40px;
+    padding: 40px 40px 60px 40px;
     
     flex-shrink: 0;
 
 
 
-    &__info {
+    .info {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -19,7 +18,7 @@
         font-weight: 300;
     }
 
-    &__links {
+    .links {
         display: flex;
         gap: 2rem;
         color: rgba($color: #E5FF9C, $alpha: 0.83);

@@ -85,3 +85,138 @@
         }
     }
 }
+
+.mainContent {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.analytics {
+    flex: 1;
+    min-width: 0;
+
+    .analyticsCard {
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.40) 0%, 
+            rgba(0, 0, 0, 0.15) 100%
+        );
+        backdrop-filter: blur(1px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        padding: 30px 24px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .analyticsHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .analyticsTitle {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+
+    .periodTabs {
+        display: flex;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 4px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+
+        .tabButton {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+
+        .activeTab {
+            background: rgba(255, 255, 255, 0.06);
+            color: #E5FF9C;
+        }
+    }
+
+    .chartWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+
+        .chartTitle {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
+        }
+    }
+}
+
+.serverInfo {
+    width: 360px;
+    flex-shrink: 0;
+    
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.40) 0%, 
+        rgba(0, 0, 0, 0.15) 100%
+    );
+    backdrop-filter: blur(1px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.03); 
+    
+    padding: 30px 24px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .infoRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .value {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+            text-align: right;
+        }
+
+        .value_status {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+}

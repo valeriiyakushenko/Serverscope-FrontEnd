@@ -4,23 +4,23 @@ import serversIcon from '../../img/svg/servers.svg'
 import ServerGraph from '../ServerGraph/ServerGraph';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import gridIcon from '../../img/svg/net.svg'
 
 interface GameCardProps {
     id: number;
+    appid: number;
     title: string;
     image: string;
     graphData: number[];
     serversCount: number;
 }
 
-const GameCard: React.FC<GameCardProps> = ({id, title, image, graphData, serversCount }) => {
+const GameCard: React.FC<GameCardProps> = ({id, appid, title, image, graphData, serversCount }) => {
     const [isLoading, setIsLoading] = useState(true);
 
 
     const handleImageLoad = () => setIsLoading(false);
     return (
-        <Link to={`/games/${id}`}>
+        <Link to={`/games/${appid}`}>
             <div className={styles.card}>
                 <div className={styles.card_imageWrapper}>
                     <img
