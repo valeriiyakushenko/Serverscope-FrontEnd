@@ -3,6 +3,7 @@ import ServerStatus from '../../components/ServerStatus/ServerStatus';
 import GameCard from '../../components/GameCard/GameCard';
 import styles from './Home.module.scss';
 import featuredIcon from '../../img/svg/featured.svg';
+import type { GameItem } from '../../services/types/game.type';
 
 function Home() {
     const { data, isLoading, error } = useGetGamesQuery({
@@ -15,7 +16,7 @@ function Home() {
     const games = data?.gamesList || [];
     const topSixGames = games.slice(0, 6);
     
-    const totalOnline = games.reduce((sum: number, game: any) => sum + (game.players || 0), 0);
+    const totalOnline = games.reduce((sum: number, game: GameItem) => sum + (game.players || 0), 0);
 
     if (isLoading) {
         return (
@@ -54,16 +55,14 @@ function Home() {
                 </h3>
 
                 <div className={styles.homeMain__gamesGrid}>
-                    {topSixGames.map((game: any) => {
-                        const gameImage = typeof game.image_link === 'string' && game.image_link;
-
+                    {topSixGames.map((game: GameItem) => {
                         return (
                             <GameCard
                                 id={game.id}
                                 appid={game.appid}
                                 key={game.id}
                                 title={game.name}
-                                image={gameImage}
+                                image={game.image_link ?? ''}
                                 graphData={game.hourly_online && game.hourly_online.length > 0 
                                     ? game.hourly_online 
                                     : [100, 120, 110, 140, 130, 160, 150]}

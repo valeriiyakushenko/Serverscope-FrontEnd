@@ -23,7 +23,7 @@ export const GameRow: React.FC<GameRowProps> = ({appid, image, name, servers, pl
         <Link to={`/games/${appid}`} className={styles.rowLink}>
             <div className={styles.row}>
                 <div className={styles.imageContainer}>
-                    <img src={image} alt={name} loading="lazy" />
+                    {image && <img src={image} alt={name} loading="lazy" />}
                 </div>
                 <div className={styles.gameName}>
                     {name}
